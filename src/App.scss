@@ -1,0 +1,204 @@
+$theme-color: rgb(36, 125, 186);
+$form-background-color: white;
+$form-text-color: black;
+$shadow-color: rgba(0,0,0,.5);
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (min-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (min-width: 992px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    top: 10px;
+  }
+  to {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+html {
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: white;
+  }
+  a {
+    color: $theme-color;
+  }
+  textarea, button, input, pre {
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1em;
+    box-sizing: border-box; 
+  }
+  input, textarea {
+    padding: 5px;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 2em;
+  }
+  pre {
+    white-space: pre-wrap;
+    margin: 0px;
+  }
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 0;
+    background: $theme-color;
+    color: white;
+    padding: 7px 10px;
+    outline: none;
+    user-select: none;
+  }
+}
+
+.App {
+  max-width: 900px;
+  margin: 0px auto;
+
+  header {
+    color: white;
+    text-align: center;
+    margin-bottom: 2em;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3em;
+      text-shadow: 3px 3px $shadow-color;
+    }
+    h2 {
+      font-size: 1.25em;
+      text-shadow: 3px 3px $shadow-color;
+    }
+    p {
+      text-shadow: 0 0 3px $shadow-color;
+    }
+    a {
+      color: white;
+    }
+  }
+
+  .hex {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .includes-hex {
+    word-break: break-all;
+  }
+
+  .link-button {
+    border: none;
+    background: none;
+    color: $theme-color;
+    text-decoration: underline;
+    padding: 0;
+  }
+
+  .content {
+    padding: 20px;
+    margin: 0px auto;
+    //width: 270px;
+
+    text-align: center;
+    
+    .distractor {
+      text-align: center;
+      font-size: 2em;
+      text-shadow: 3px 3px $shadow-color;
+    }
+
+    .Billboard {
+      .text {
+        text-align: center;
+        font-size: 3em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-shadow: 3px 3px $shadow-color;
+        margin-bottom: 20px;
+      }
+    }
+    
+    .message-input {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > :not(:last-child) {
+        margin-right: 5px;
+      }
+      
+      input {
+        width: 75%;
+        text-align: center;
+        background-color: rgba(255, 255, 255, .9);
+        border: 1px solid white;
+      }
+    }
+
+    .old-messages {
+      .entries {
+        display: table;
+        margin: 0 auto;
+        max-width: 600px;
+    
+        .entry {
+          display: table-row;
+
+          div {
+            display: table-cell;
+            padding-bottom: 10px;
+            vertical-align: middle;
+          }
+          div:not(:last-child) {
+            padding-right: 10px;
+
+          }
+    
+          .author {
+            text-align: right;
+          }
+    
+          .text {
+            text-align: left;
+          }
+          .value {
+            text-align: right;
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+}
