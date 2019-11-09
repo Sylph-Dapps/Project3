@@ -173,7 +173,7 @@ class App extends React.Component {
         this.postMessage();
       }}>
         <div className="message-input">
-          <input ref={this.input} />
+          <input ref={this.input} maxLength={1000} />
           <button onClick={this.postMessage}>POST!</button>
         </div>
       </form>
@@ -265,7 +265,7 @@ class App extends React.Component {
                   { this.renderMessageInput() }
 
                   <p style={{maxWidth: '600px', margin: '20px auto'}}>
-                    On December 24, 2019 at 12:00 AM UTC it will no longer be possible to post new messages, thus immortalizing the most recently posted message!
+                    On December 24, 2019 at 12:00 AM UTC all locked ETH can be withdrawn again, and it will no longer be possible to post new messages, thus immortalizing the most recently posted message!
                   </p>
 
                   { this.renderOldMessages() }

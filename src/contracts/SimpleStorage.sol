@@ -9,10 +9,16 @@ contract SimpleStorage {
   }
 
   Message[] messages;
+
   address public owner;
 
-  constructor() public {
+  mapping(address => uint) public authorBalances;
+
+  uint256 public expiresAt;
+
+  constructor(uint256 _expiresAt) public {
     owner = msg.sender;
+    expiresAt = _expiresAt;
   }
 
   function getNumberOfMessages() public view returns (uint num)
@@ -39,6 +45,7 @@ contract SimpleStorage {
 
   function postMessage(string memory _text) public payable
   {
+    require(bytes(_text).length > 0, "An empty message cannot be posted");
     require(msg.value > 0, "No ETH was sent");
     if(messages.length > 0) {
       require(msg.value == getNextValue(), "The incorrect amount of ETH was sent");
@@ -50,6 +57,8 @@ contract SimpleStorage {
       value: msg.value
     });
     messages.push(m);
+
+    authorBalances[msg.sender] += msg.value;
   }
 
   function getNextValue() public view returns (uint value)
@@ -58,4 +67,16 @@ contract SimpleStorage {
     return currentValue + (currentValue * 7 / 100);
   }
 
+  function getAuthorBalance() public view returns(uint num)
+  {
+    return authorBalances[msg.sender];
+  }
+
+  function withdraw() public
+  {
+    require(now > expiresAt, "You cannot withdraw until after the expiration timestamp"); // solium-disable-line security/no-block-members
+    uint amount = authorBalances[msg.sender];
+    authorBalances[msg.sender] = 0;
+    msg.sender.transfer(amount);
+  }
 }
